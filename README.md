@@ -39,6 +39,16 @@ $ curl -s -H 'Accept: application/json' -d 'pattern=gorsuch' -X GET http://127.0
 ]
 ```
 
+Checking the health of the service:
+
+```bash
+$ curl -s -H 'Accept: application/json' GET http://127.0.0.1:5001/health/ | jsonpp
+{
+  "status": "OK",
+  "count": 356
+}
+```
+
 ## Deployment
 
 Therry is a very basic Sinatra application. It uses rufus-scheduler to gather routine updates to the Graphite metrics store before caching them in memory.

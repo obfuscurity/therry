@@ -24,5 +24,8 @@ module Therry
       Metric.find(params[:pattern]).to_json
     end
 
+    get '/health/?' do
+      {:status => 'OK', :count => Metric.all.count}.to_json
+    end
   end
 end
