@@ -8,12 +8,12 @@ module Therry
   class Web < Sinatra::Base
 
     before do
-#      if request.accept.include?("application/json")
-#        content_type "application/json"
-#        status 200
-#      else
-#        halt
-#      end
+      if request.accept.include?("application/json")
+        content_type "application/json"
+        status 200
+      else
+        halt 400
+      end
     end
 
     get '/' do
