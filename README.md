@@ -4,7 +4,26 @@
 
 Provide a web service that caches Graphite metrics and exposes an endpoint for dumping or searching them.
 
-## Example
+## Usage
+
+Dumping all of the known metrics:
+
+```bash
+$ curl -s -H 'Accept: application/json' http://127.0.0.1:5001/ | jsonpp
+[
+  "carbon.agents.li520-115-a.avgUpdateTime",
+  "carbon.agents.li520-115-a.cache.overflow",
+  "carbon.agents.li520-115-a.cache.queries",
+  "carbon.agents.li520-115-a.cache.queues",
+...
+  "foo-obfuscurity-com.swap.swap-used.value",
+  "foo-obfuscurity-com.swap.swap_io-in.value",
+  "foo-obfuscurity-com.swap.swap_io-out.value",
+  "foo-obfuscurity-com.users.users.users"
+]
+```
+
+Searching for a specific string across all metrics:
 
 ```bash
 $ curl -s -H 'Accept: application/json' -d 'pattern=gorsuch' -X GET http://127.0.0.1:5001/search/ | jsonpp
