@@ -4,6 +4,22 @@
 
 Provide a web service that caches Graphite metrics and exposes an endpoint for dumping or searching them.
 
+## Example
+
+```bash
+$ curl -s -H 'Accept: application/json' -d 'pattern=gorsuch' -X GET http://127.0.0.1:5001/search/ | jsonpp
+[
+  "github.backstop.refs.heads.master.michael-gorsuch-gmail-com.120a181c62d0f595b4a262251cfada192aef0189",
+  "github.backstop.refs.heads.master.michael-gorsuch-gmail-com.92d45166b37d6310d5501f7a4541ded643e09280",
+  "github.backstop.refs.heads.master.michael-gorsuch-gmail-com.dd17953f3e1152bbe4a499e7d5929e301247c6c4",
+  "github.backstop.refs.heads.travis-ci.michael-gorsuch-gmail-com.922bb15fb593763865cd5d4c9b8f4d14cc364ef3",
+  "gorsuch.a",
+  "gorsuch.b",
+  "gorsuch.c",
+  "gorsuch.foo"
+]
+```
+
 ## Deployment
 
 Therry is a very basic Sinatra application. It uses rufus-scheduler to gather routine updates to the Graphite metrics store before caching them in memory.
