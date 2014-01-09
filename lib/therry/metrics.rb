@@ -6,11 +6,8 @@ class Metric
   end
 
   def self.find(search)
-    results = []
-    @@paths.each do |p|
-      results << p if p.match(/#{search}/i)
-    end
-   results 
+    search_pattern = /#{search}/i
+    @@paths.select { |p| search_pattern.match(p) }
   end
 
   def self.load
