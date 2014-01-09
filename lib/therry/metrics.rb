@@ -16,7 +16,7 @@ class Metric
 
   def self.update
     u = URI.parse(ENV['GRAPHITE_URL'])
-    if (!ENV['GRAPHITE_USER'].empty? && !ENV['GRAPHITE_PASS'].empty?)
+    if (ENV.has_key?('GRAPHITE_USER') && ENV.has_key?('GRAPHITE_PASS'))
       u.user = ENV['GRAPHITE_USER']
       u.password = CGI.escape(ENV['GRAPHITE_PASS'])
     end
